@@ -43,12 +43,15 @@ public class InBetween
             }
             else
             {
+            if(betAmount*2<=moneyToBet)
+            {
             System.out.println("Want to double your bet? (Y for Yes, N for No) ");
             String doubleBet = input.nextLine().toLowerCase();
             if(doubleBet.equals("y"))
             {
                 betAmount *= 2;
             }
+        }
             System.out.print("Will the next card be in between the two cards? (Y for Yes, N for No) ");
             String guess = input.nextLine().toLowerCase();
 
@@ -73,6 +76,11 @@ public class InBetween
                 moneyToBet-=betAmount;
                 betAmount=0;
                 System.out.println("Incorrect! You now have " + moneyToBet + " dollars.");
+                if(moneyToBet<=0)
+                {
+                    gameOver = true;
+                    break;
+                }
                 System.out.println("Do you want to continue playing? (Y for Yes, N for No) ");
                 String continuePlaying = input.nextLine().toLowerCase();
                 if(continuePlaying.equals("n"))
